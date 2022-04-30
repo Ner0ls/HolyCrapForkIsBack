@@ -1,9 +1,11 @@
-# My first mod
+# Holy Crap! Fork is Back!
 
-Description.
+Uinspired item mod by yours truly.
+
+It currently adds 3 white items, 1 green item and 1 red item.
 
 ## Changelog
 
-**1.0.0**
+**0.1.0**
 
-* Release of my first mod.
+* Initial commit, unfinished.
