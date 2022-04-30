@@ -1,0 +1,10 @@
+﻿{
+	"name": "HolyCrapForkIsBack",
+	"version_number": "0.1.0",
+	"website_url": "",
+	"description": "A totally original idea",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.9",
+		"RiskofThunder-HookGenPatcher-1.2.1"
+	]
+}

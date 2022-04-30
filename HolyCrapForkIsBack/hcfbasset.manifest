@@ -1,0 +1,49 @@
+ManifestFileVersion: 0
+CRC: 2553826172
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: afd479b3708d76c93cd4364490841bac
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 898c8bddee9e29ddc6a46a9a891be428
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Import/Items/models/knife/knifetex.png
+- Assets/Import/Items/models/spoon/Grises.png
+- Assets/Import/Items/models/fork/Grises.png
+- Assets/Import/Items/icons/Spoon.png
+- Assets/Import/Items/models/fork/cumnedor.fbx
+- Assets/Import/Items/models/spoon/Spoon.prefab
+- Assets/Import/Items/models/spoon/cumchara.fbx
+- Assets/Import/Items/models/knife/Knife.prefab
+- Assets/Import/Items/models/knife/Materials/knifetex.mat
+- Assets/Import/Items/models/spoon/Materials/Grises.mat
+- Assets/Import/Items/models/fork/Materials/Grises.mat
+- Assets/Import/Items/icons/Fork.png
+- Assets/Import/Items/icons/Knife.png
+- Assets/Import/Items/models/fork/Fork.prefab
+- Assets/Import/Items/models/knife/cumchillo.fbx
+Dependencies: []
