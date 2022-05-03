@@ -30,7 +30,7 @@ namespace HolyCrapForkIsBack.Items
 
         #region DefaultLanguage
         public override string nameDefault => "Fork";
-        public override string pickupDefault => "Deal more damage.";
+        public override string pickupDefault => "Do more damage.";
         public override string descDefault => $"Gain +{damageBonus} Base Damage <style=cStack>(+{damageBonusPerStack} per stack)</style>.";
         public override string loreDefault => "Totally original idea";
         #endregion
