@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace HolyCrapForkIsBack.Items
 {
-    public class Fork : ItemBase<Knife>
+    public class Fork : ItemBase<Fork>
     {
         public static ItemDef forkItemDef;
         public override bool disabled => false;
@@ -43,8 +43,9 @@ namespace HolyCrapForkIsBack.Items
             forkItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier1Def.asset").WaitForCompletion();
             forkItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/fork.png");
             forkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/fork/Fork.prefab");
-            forkItemDef.pickupModelPrefab.GetComponent<Shader>();
-            
+            HopooShaderToMaterial.Standard.Apply(forkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Emission(forkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.015f);
+
             SetupLanguageTokens();
             SetupHooks();
             
@@ -56,13 +57,13 @@ namespace HolyCrapForkIsBack.Items
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
 
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody playerBody, RecalculateStatsAPI.StatHookEventArgs args)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
         {
             //We need an inventory to do check for our item
-            if (playerBody.inventory)
+            if (characterBody.inventory)
             {
                 //store the amount of our item we have
-                var grabCount = playerBody.inventory.GetItemCount(forkItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(forkItemDef.itemIndex);
                 if (grabCount > 0)
                 {
                     args.baseDamageAdd += (damageBonus + (damageBonusPerStack * grabCount));

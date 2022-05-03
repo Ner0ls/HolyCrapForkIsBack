@@ -71,28 +71,28 @@ namespace HolyCrapForkIsBack.Items
         private void HealthComponent_UpdateLastHitTime(On.RoR2.HealthComponent.orig_UpdateLastHitTime orig, HealthComponent self, float damageValue, Vector3 damagePosition, bool damageIsSilent, GameObject attacker)
         {
             orig.Invoke(self, damageValue, damagePosition, damageIsSilent, attacker);
-            CharacterBody playerBody = self.body;
+            CharacterBody characterBody = self.body;
 
-            if (playerBody.inventory && self.alive && self.isHealthLow)
+            if (characterBody.inventory && self.alive && self.isHealthLow)
             {
-                var grabCount = playerBody.inventory.GetItemCount(chopsticksItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(chopsticksItemDef.itemIndex);
 
                 if (grabCount > 0)
                 {
-                    CharacterMasterNotificationQueue.PushItemTransformNotification(playerBody.master, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
-                    playerBody.inventory.RemoveItem(chopsticksItemDef, grabCount);
-                    playerBody.inventory.GiveItem(ItemBase<BrokenChopsticks>.instance.itemDef, grabCount);
+                    CharacterMasterNotificationQueue.PushItemTransformNotification(characterBody.master, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    characterBody.inventory.RemoveItem(chopsticksItemDef, grabCount);
+                    characterBody.inventory.GiveItem(ItemBase<BrokenChopsticks>.instance.itemDef, grabCount);
                 }
             }
         }
 
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody playerBody, RecalculateStatsAPI.StatHookEventArgs args)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
         {
             //We need an inventory to do check for our item
-            if (playerBody.inventory)
+            if (characterBody.inventory)
             {
                 //store the amount of our item we have
-                var grabCount = playerBody.inventory.GetItemCount(chopsticksItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(chopsticksItemDef.itemIndex);
                 if (grabCount > 0)
                 {
                     args.critAdd += (critChanceBonus * grabCount);

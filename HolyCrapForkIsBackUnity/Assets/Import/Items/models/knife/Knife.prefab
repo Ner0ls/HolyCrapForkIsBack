@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 3261527865130155354}
   - component: {fileID: 4119298387237328391}
   - component: {fileID: 5825544048831213086}
-  - component: {fileID: 7620042669753932209}
   m_Layer: 0
   m_Name: mdlKnife
   m_TagString: Untagged
@@ -111,17 +110,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7620042669753932209
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6401988854952469303}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4898376589914736847, guid: 52fbaafc2962f6c4bbe5a6d03d1a5da4, type: 3}

@@ -79,6 +79,10 @@ namespace HolyCrapForkIsBack.Items
             itemDef.canRemove = canRemove;
             itemDef.hidden = hidden;
 
+            // Default dev Models
+            itemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            itemDef.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
+
             return itemDef;
         }
 

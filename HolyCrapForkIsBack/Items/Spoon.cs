@@ -63,6 +63,8 @@ namespace HolyCrapForkIsBack.Items
             spoonItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier1Def.asset").WaitForCompletion();
             spoonItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/spoon.png");
             spoonItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/spoon/Spoon.prefab");
+            HopooShaderToMaterial.Standard.Apply(spoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Emission(spoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.015f);
 
             CreateBuff();
             SetupLanguageTokens();
@@ -73,18 +75,46 @@ namespace HolyCrapForkIsBack.Items
 
         protected override void SetupHooks()
         {
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             CharacterBody.onBodyStartGlobal += CharacterBody_onBodyStartGlobal;
         }
 
-        private void CharacterBody_onBodyStartGlobal(CharacterBody playerBody)
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport report)
         {
-            if (playerBody.inventory && playerBody.isPlayerControlled && damageBonusStacks > 0)
+            //If a character was killed by the world, we shouldn't do anything.
+            if (!report.attacker || !report.attackerBody)
+            {
+                return;
+            }
+
+            // Else, let's pump up those stacks
+            CharacterBody characterBody = report.attackerBody;
+
+            if (characterBody.inventory)
+            {
+                var grabCount = characterBody.inventory.GetItemCount(spoonItemDef.itemIndex);
+                if (grabCount > 0)
+                {
+                    float currentMaxStacks = (damageBonusCap / damageBonusPerKill) * grabCount;
+                    if (damageBonusStacks < currentMaxStacks)
+                    {
+                        characterBody.AddBuff(stackBuff);
+                        damageBonusStacks++;
+                    }
+                }
+            }
+
+            orig.Invoke(self, report);
+        }
+
+        private void CharacterBody_onBodyStartGlobal(CharacterBody characterBody)
+        {
+            if (characterBody.inventory && characterBody.isPlayerControlled && damageBonusStacks > 0)
             {
                 for (var x = 0; x < damageBonusStacks; x++)
                 {
-                    playerBody.AddBuff(stackBuff);
+                    characterBody.AddBuff(stackBuff);
                 }
             }
         }
@@ -97,58 +127,30 @@ namespace HolyCrapForkIsBack.Items
             stackBuff.canStack = true;
             stackBuff.isDebuff = false;
             stackBuff.eliteDef = null;
-            stackBuff.iconSprite = Addressables.LoadAsset<Sprite>("RoR2/Base/GainArmor/bdElephantArmorBoost.asset").WaitForCompletion();
+            stackBuff.iconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Buffs/spoonStack.png");
 
             ContentAddition.AddBuffDef(stackBuff);
         }
 
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport report)
-        {
-            //If a character was killed by the world, we shouldn't do anything.
-            if (!report.attacker || !report.attackerBody)
-            {
-                return;
-            }
-
-            // Else, let's pump up those stacks
-            CharacterBody playerBody = report.attackerBody;
-
-            if (playerBody.inventory && playerBody.isPlayerControlled)
-            {
-                var grabCount = playerBody.inventory.GetItemCount(spoonItemDef.itemIndex);
-
-                if (grabCount > 0)
-                {
-                    float currentMaxStacks = (damageBonusCap / damageBonusPerKill) * grabCount;
-
-                    if (damageBonusStacks < currentMaxStacks)
-                    {
-                        playerBody.AddBuff(stackBuff);
-                        damageBonusStacks++;
-                    }
-                }
-            }
-        }
-
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody playerBody, RecalculateStatsAPI.StatHookEventArgs args)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
         {
             //We need an inventory to do check for our item
-            if (playerBody.inventory && playerBody.isPlayerControlled)
+            if (characterBody.inventory && characterBody.isPlayerControlled)
             {
                 //store the amount of our item we have
-                var grabCount = playerBody.inventory.GetItemCount(spoonItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(spoonItemDef.itemIndex);
 
                 if (grabCount > 0)
                 {
-                    args.baseDamageAdd += constantDamageBonus + (damageBonusPerKill * damageBonusStacks * (1f + (levelScalingF * playerBody.level)));
+                    args.baseDamageAdd += constantDamageBonus + (damageBonusPerKill * damageBonusStacks * (1f + (levelScalingF * characterBody.level)));
                 }
                 else
                 {
-                    if (playerBody.GetBuffCount(stackBuff) > 0)
+                    if (characterBody.GetBuffCount(stackBuff) > 0)
                     {
-                        for (var x = 0; x < playerBody.GetBuffCount(stackBuff); x++)
+                        for (var x = 0; x < characterBody.GetBuffCount(stackBuff); x++)
                         {
-                            playerBody.RemoveBuff(stackBuff);
+                            characterBody.RemoveBuff(stackBuff);
                         }
                     }
                     damageBonusStacks = 0;

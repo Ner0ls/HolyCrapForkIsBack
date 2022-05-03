@@ -58,7 +58,9 @@ namespace HolyCrapForkIsBack.Items
             knifeItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier1Def.asset").WaitForCompletion();
             knifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
             knifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/knife/Knife.prefab");
-            
+            HopooShaderToMaterial.Standard.Apply(knifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Emission(knifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.005f);
+
             SetupLanguageTokens();
             SetupHooks();
             
@@ -70,13 +72,13 @@ namespace HolyCrapForkIsBack.Items
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
 
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody playerBody, RecalculateStatsAPI.StatHookEventArgs args)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
         {
             //We need an inventory to do check for our item
-            if (playerBody.inventory)
+            if (characterBody.inventory)
             {
                 //store the amount of our item we have
-                var grabCount = playerBody.inventory.GetItemCount(knifeItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(knifeItemDef.itemIndex);
                 if (grabCount > 0)
                 {
                     args.critAdd += (critChanceBonus * grabCount);

@@ -16,7 +16,7 @@ namespace HolyCrapForkIsBack.Items
         public override bool disabled => false;
 
         public override string name => prefix + "SPORK";
-        public override ItemTag[] itemTags => new ItemTag[3] { ItemTag.Damage, ItemTag.OnKillEffect,  ItemTag.OnStageBeginEffect};
+        public override ItemTag[] itemTags => new ItemTag[3] { ItemTag.Utility, ItemTag.OnKillEffect, ItemTag.OnStageBeginEffect };
         public override bool canRemove => false;
         public override bool hidden => false;
 
@@ -74,23 +74,53 @@ namespace HolyCrapForkIsBack.Items
 
         public void CreateBuff()
         {
+            var strongVFBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdVoidFogStrong.asset").WaitForCompletion();
+
             stackBuff = ScriptableObject.CreateInstance<BuffDef>();
             stackBuff.buffColor = Color.magenta;
             stackBuff.canStack = true;
             stackBuff.isDebuff = false;
             stackBuff.isHidden = false;
             stackBuff.name = prefix + "SPORK_STACK_BUFF";
-            stackBuff.iconSprite = Addressables.LoadAsset<Sprite>("RoR2/Base/Common/bdVoidFogStrong.asset").WaitForCompletion();
+            stackBuff.iconSprite = strongVFBuffDef.iconSprite;
 
             ContentAddition.AddBuffDef(stackBuff);
         }
 
         protected override void SetupHooks()
         {
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             Stage.onStageStartGlobal += Stage_onStageStartGlobal;
-            //CharacterBody.onBodyStartGlobal += CharacterBody_onBodyStartGlobal;
+        }
+
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport report)
+        {
+            Log.LogInfo("Death registered");
+            //If a character was killed by the world, we shouldn't do anything.
+            if (!report.attacker || !report.attackerBody)
+            {
+                return;
+            }
+            Log.LogInfo("Attacker: " + nameof(report.attacker));
+            // Else, let's pump up those stacks
+            CharacterBody characterBody = report.attackerBody;
+
+            if (characterBody.inventory)
+            {
+                var grabCount = characterBody.inventory.GetItemCount(sporkItemDef.itemIndex);
+
+                if (grabCount > 0)
+                {
+                    if (cooldownBonusStacks < maxStacks)
+                    {
+                        characterBody.AddBuff(stackBuff);
+                        cooldownBonusStacks++;
+                    }
+                }
+            }
+
+            orig.Invoke(self, report);
         }
 
         private void Stage_onStageStartGlobal(Stage obj)
@@ -98,51 +128,25 @@ namespace HolyCrapForkIsBack.Items
             cooldownBonusStacks = 0;
         }
 
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport report)
-        {
-            //If a character was killed by the world, we shouldn't do anything.
-            if (!report.attacker || !report.attackerBody)
-            {
-                return;
-            }
-
-            // Else, let's pump up those stacks
-            CharacterBody playerBody = report.attackerBody;
-
-            if (playerBody.inventory)
-            {
-                var grabCount = playerBody.inventory.GetItemCount(sporkItemDef.itemIndex);
-
-                if (grabCount > 0)
-                {
-                    if (cooldownBonusStacks < maxStacks)
-                    {
-                        playerBody.AddBuff(stackBuff);
-                        cooldownBonusStacks++;
-                    }
-                }
-            }
-        }
-
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody playerBody, RecalculateStatsAPI.StatHookEventArgs args)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
         {
             //We need an inventory to do check for our item
-            if (playerBody.inventory && playerBody.isPlayerControlled)
+            if (characterBody.inventory && characterBody.isPlayerControlled)
             {
                 //store the amount of our item we have
-                var grabCount = playerBody.inventory.GetItemCount(sporkItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(sporkItemDef.itemIndex);
 
-                if (grabCount >= 0)
+                if (grabCount > 0)
                 {
                     args.cooldownMultAdd -= cooldownBonusPerKill * cooldownBonusStacks * grabCount;
                 }
                 else
                 {
-                    if (playerBody.GetBuffCount(stackBuff) > 0)
+                    if (characterBody.GetBuffCount(stackBuff) > 0)
                     {
-                        for (var x = 0; x < playerBody.GetBuffCount(stackBuff); x++)
+                        for (var x = 0; x < characterBody.GetBuffCount(stackBuff); x++)
                         {
-                            playerBody.RemoveBuff(stackBuff);
+                            characterBody.RemoveBuff(stackBuff);
                         }
                     }
                     cooldownBonusStacks = 0;

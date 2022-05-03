@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2553826172
+CRC: 1155643328
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: afd479b3708d76c93cd4364490841bac
+    Hash: 8ba3dab49b2d367d8327614b9319ab5b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 898c8bddee9e29ddc6a46a9a891be428
+    Hash: 1fe3abd029edb3522ae5dbbc711d0a74
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,8 +25,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 64
-  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
@@ -38,6 +36,7 @@ Assets:
 - Assets/Import/Items/models/fork/cumnedor.fbx
 - Assets/Import/Items/models/spoon/Spoon.prefab
 - Assets/Import/Items/models/spoon/cumchara.fbx
+- Assets/Import/Buffs/spoonStack.png
 - Assets/Import/Items/models/knife/Knife.prefab
 - Assets/Import/Items/models/knife/Materials/knifetex.mat
 - Assets/Import/Items/models/spoon/Materials/Grises.mat

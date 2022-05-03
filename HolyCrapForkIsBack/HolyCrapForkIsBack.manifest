@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3114280114
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: hcfbasset
+      Dependencies: {}
