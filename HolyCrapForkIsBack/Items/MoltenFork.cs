@@ -43,7 +43,7 @@ namespace HolyCrapForkIsBack.Items
 
             gForkItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
             //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
-            //gKnifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/knife/Knife.prefab");
+            gForkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/molt_fork/MoltFork.prefab");
 
             SetupLanguageTokens();
             SetupHooks();
