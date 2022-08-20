@@ -17,7 +17,6 @@ namespace HolyCrapForkIsBack.Items
             {
                 ItemBase hcfbItem = (ItemBase)Activator.CreateInstance(item);
                 //if (!hcfbItem.enabled.Value) { continue; }
-                //PlugInChips.instance.Logger.LogMessage("Initializing Items...");
 
                 //item.Init(HolyCrapForkIsBack.Main.instance.Config);
                 if (hcfbItem.disabled) continue;

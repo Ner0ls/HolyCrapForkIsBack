@@ -47,7 +47,7 @@ namespace HolyCrapForkIsBack.Items
 
             SetupLanguageTokens();
             SetupHooks();
-            
+
             ItemAPI.Add(new CustomItem(gForkItemDef, displayRules));
         }
 
@@ -93,7 +93,7 @@ namespace HolyCrapForkIsBack.Items
             orig.Invoke(self, damageInfo, victim);
         }
 
-            private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (!damageInfo.attacker)
             {
@@ -101,19 +101,17 @@ namespace HolyCrapForkIsBack.Items
 
                 return;
             }
-
             var attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-            var attackedBody = self.body;
-            var onFireBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdOnFire.asset").WaitForCompletion();
-            var onSFireBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/StrengthenBurn/bdStrongerBurn.asset").WaitForCompletion();
-
-            if (attackerBody.inventory)
+            
+            if (attackerBody != null && attackerBody.inventory)
             {
                 var grabCount = attackerBody.inventory.GetItemCount(gForkItemDef);
 
                 if (grabCount > 0)
                 {
-                    Log.LogDebug("Inflictor: " + attackerBody.name);
+                    var attackedBody = self.body;
+                    var onFireBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdOnFire.asset").WaitForCompletion();
+                    var onSFireBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/StrengthenBurn/bdStrongerBurn.asset").WaitForCompletion();
 
                     if (attackedBody.HasBuff(onFireBuffDef) || attackedBody.HasBuff(onSFireBuffDef))
                     {

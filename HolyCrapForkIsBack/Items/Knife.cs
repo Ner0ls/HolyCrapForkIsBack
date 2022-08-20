@@ -59,7 +59,7 @@ namespace HolyCrapForkIsBack.Items
             knifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
             knifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/knife/Knife.prefab");
             HopooShaderToMaterial.Standard.Apply(knifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
-            HopooShaderToMaterial.Standard.Emission(knifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.005f);
+            HopooShaderToMaterial.Standard.Gloss(knifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.05f, 10f, Color.white);
 
             SetupLanguageTokens();
             SetupHooks();

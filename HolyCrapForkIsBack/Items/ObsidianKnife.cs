@@ -20,7 +20,7 @@ namespace HolyCrapForkIsBack.Items
         public override bool hidden => false;
 
         protected float critDamageBonus = 0.5f;
-        protected float hemoDotChance = 30;
+        protected float hemoDotChance = 10;
 
         #region LanguageTokens
         public override string nameToken => prefix + "OBSIDIAN_KNIFE_NAME";
@@ -43,7 +43,10 @@ namespace HolyCrapForkIsBack.Items
 
             gKnifeItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
             //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
-            //gKnifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/knife/Knife.prefab");
+            gKnifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/obs_knife/ObsKnife.prefab");
+            HopooShaderToMaterial.Standard.Apply(gKnifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Emission(gKnifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.001f, Color.white);
+            HopooShaderToMaterial.Standard.Gloss(gKnifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.2f, 5f, Color.white);
 
             SetupLanguageTokens();
             SetupHooks();
@@ -67,9 +70,9 @@ namespace HolyCrapForkIsBack.Items
 
             var attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
 
-            if (attackerBody && attackerBody.inventory && damageInfo.crit)
+            if (attackerBody != null && attackerBody.inventory && damageInfo.crit)
             {
-                var grabCount = attackerBody.inventory.GetItemCount(gKnifeItemDef);
+                var grabCount = attackerBody.inventory.GetItemCount(gKnifeItemDef.itemIndex);
 
                 if (grabCount > 0)
                 {
@@ -77,16 +80,7 @@ namespace HolyCrapForkIsBack.Items
 
                     if (Util.CheckRoll(dotChance, attackerBody.master))
                     {
-                        InflictDotInfo inflictDotInfo = new InflictDotInfo
-                        {
-                            attackerObject = damageInfo.attacker,
-                            victimObject = victim,
-                            totalDamage = damageInfo.damage,
-                            damageMultiplier = 1f,
-                            dotIndex = DotController.DotIndex.SuperBleed
-                        };
-
-                        DotController.InflictDot(ref inflictDotInfo);
+                        damageInfo.damageType = DamageType.SuperBleedOnCrit;
                     }
                 }
             }

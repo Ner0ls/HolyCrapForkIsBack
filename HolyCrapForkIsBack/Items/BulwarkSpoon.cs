@@ -37,7 +37,7 @@ namespace HolyCrapForkIsBack.Items
         public override string pickupDefault => "Increases your stats in relation of your current barrier value.";
         public override string descDefault => $"Gain {barrierOnKill} barrier on kill.\n" +
             $"Increases your damage by {damageBonus * 100}% <style=cStack>(+{damageBonus * 100}% per stack)</style>, your armor by {armorBonus} <style=cStack>(+{armorBonus} per stack)</style> " +
-            $"and reduces your cooldowns by {cdrBonus * 100}% <style=cStack>(+{cdrPerStack * 100}% per stack)</style> in relation of the current percent of barrier you have over you combined health.";
+            $"and reduces your cooldowns by {cdrBonus * 100}% <style=cStack>(+{cdrPerStack * 100}% per stack)</style> in relation of the current percent of barrier you have over your combined health.";
         public override string loreDefault => "TBD";
         #endregion
 
@@ -48,7 +48,9 @@ namespace HolyCrapForkIsBack.Items
 
             gSpoonItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
             //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
-            //gKnifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/knife/Knife.prefab");
+            gSpoonItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/bul_spoon/BulSpoon.prefab");
+            HopooShaderToMaterial.Standard.Apply(gSpoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Gloss(gSpoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.1f, 1f, Color.white);
 
             SetupLanguageTokens();
             SetupHooks();

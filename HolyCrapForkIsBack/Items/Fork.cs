@@ -44,7 +44,7 @@ namespace HolyCrapForkIsBack.Items
             forkItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/fork.png");
             forkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/fork/Fork.prefab");
             HopooShaderToMaterial.Standard.Apply(forkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
-            HopooShaderToMaterial.Standard.Emission(forkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.015f);
+            HopooShaderToMaterial.Standard.Gloss(forkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.1f, 10f, Color.white);
 
             SetupLanguageTokens();
             SetupHooks();

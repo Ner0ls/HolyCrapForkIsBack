@@ -16,11 +16,10 @@ namespace HolyCrapForkIsBack.Items
         public override bool disabled => false;
 
         public override string name => prefix + "SPORK";
-        public override ItemTag[] itemTags => new ItemTag[3] { ItemTag.Utility, ItemTag.OnKillEffect, ItemTag.OnStageBeginEffect };
+        public override ItemTag[] itemTags => new ItemTag[4] { ItemTag.Utility, ItemTag.OnKillEffect, ItemTag.OnStageBeginEffect, ItemTag.CannotCopy };
         public override bool canRemove => false;
         public override bool hidden => false;
 
-        public float cooldownBonusStacks = 0f;
         public float cooldownBonusPerKill = 0.0005f;
         public float maxStacks = 100;
         public float cooldownBonusCap;
@@ -61,7 +60,9 @@ namespace HolyCrapForkIsBack.Items
             //sporkItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/VoidTier1Def.asset").WaitForCompletion();
             sporkItemDef.deprecatedTier = ItemTier.VoidTier1;
             sporkItemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
-            sporkItemDef.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
+            sporkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/spork/Spork.prefab");
+            HopooShaderToMaterial.Standard.Apply(sporkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+            HopooShaderToMaterial.Standard.Gloss(sporkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.2f, 5f, Color.white);
 
             CreateBuff();
             SetupLanguageTokens();
@@ -91,19 +92,17 @@ namespace HolyCrapForkIsBack.Items
         {
             On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
-            Stage.onStageStartGlobal += Stage_onStageStartGlobal;
         }
 
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport report)
         {
-            Log.LogInfo("Death registered");
             //If a character was killed by the world, we shouldn't do anything.
             if (!report.attacker || !report.attackerBody)
             {
                 return;
             }
-            Log.LogInfo("Attacker: " + nameof(report.attacker));
-            // Else, let's pump up those stacks
+
+            // Else, let's try to pump up those stacks
             CharacterBody characterBody = report.attackerBody;
 
             if (characterBody.inventory)
@@ -112,20 +111,16 @@ namespace HolyCrapForkIsBack.Items
 
                 if (grabCount > 0)
                 {
-                    if (cooldownBonusStacks < maxStacks)
+                    var stackCount = characterBody.GetBuffCount(stackBuff);
+
+                    if (stackCount < maxStacks)
                     {
                         characterBody.AddBuff(stackBuff);
-                        cooldownBonusStacks++;
                     }
                 }
             }
 
             orig.Invoke(self, report);
-        }
-
-        private void Stage_onStageStartGlobal(Stage obj)
-        {
-            cooldownBonusStacks = 0;
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody characterBody, RecalculateStatsAPI.StatHookEventArgs args)
@@ -135,6 +130,7 @@ namespace HolyCrapForkIsBack.Items
             {
                 //store the amount of our item we have
                 var grabCount = characterBody.inventory.GetItemCount(sporkItemDef.itemIndex);
+                var cooldownBonusStacks = characterBody.GetBuffCount(stackBuff);
 
                 if (grabCount > 0)
                 {
@@ -142,14 +138,15 @@ namespace HolyCrapForkIsBack.Items
                 }
                 else
                 {
-                    if (characterBody.GetBuffCount(stackBuff) > 0)
+                    var stackCount = characterBody.GetBuffCount(stackBuff);
+
+                    if (stackCount > 0)
                     {
-                        for (var x = 0; x < characterBody.GetBuffCount(stackBuff); x++)
+                        for (var x = 0; x < stackCount; x++)
                         {
                             characterBody.RemoveBuff(stackBuff);
                         }
                     }
-                    cooldownBonusStacks = 0;
                 }
             }
         }

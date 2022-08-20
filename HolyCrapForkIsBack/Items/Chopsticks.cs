@@ -54,8 +54,9 @@ namespace HolyCrapForkIsBack.Items
 
             chopsticksItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier2Def.asset").WaitForCompletion();
             chopsticksItemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
-            chopsticksItemDef.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
-            
+            chopsticksItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/chopsticks/Chopsticks.prefab");
+            HopooShaderToMaterial.Standard.Apply(chopsticksItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
+
             SetupLanguageTokens();
             SetupHooks();
             
