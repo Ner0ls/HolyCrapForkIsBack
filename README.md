@@ -32,6 +32,12 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
+**0.6.0**
+
+* Refactored stack items
+* Applied all in-game models
+* Corrected Obsidian Knife DoT not applying correctly
+
 **0.5.0**
 
 * Implemented Red Items: Bulwark Spoon Molten Fork and Obsidian Knife
