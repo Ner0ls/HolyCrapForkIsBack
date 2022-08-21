@@ -11,14 +11,15 @@ namespace HolyCrapForkIsBack.Items
     public class BrokenChopsticks : ItemBase<BrokenChopsticks>
     {
         public static ItemDef brokenChopsticksItemDef;
-        public override bool disabled => false;
+        public override bool forceEnable => true;
 
         public override string name => prefix + "BROKEN_CHOPSTICKS";
         public override ItemTag[] itemTags => new ItemTag[] { };
 
         public override bool canRemove => false;
         public override bool hidden => false;
-        
+        public override bool dlcRequired => false;
+
 
         #region LanguageTokens
         public override string nameToken => prefix + "BROKEN_CHOPSTICKS_NAME";
@@ -34,7 +35,7 @@ namespace HolyCrapForkIsBack.Items
         public override string loreDefault => "";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             brokenChopsticksItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);

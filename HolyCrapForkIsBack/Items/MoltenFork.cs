@@ -11,13 +11,12 @@ namespace HolyCrapForkIsBack.Items
     public class MoltenFork : ItemBase<MoltenFork>
     {
         public static ItemDef gForkItemDef;
-        public override bool disabled => false;
-
         public override string name => prefix + "MOLTEN_FORK";
         public override ItemTag[] itemTags => new ItemTag[1] { ItemTag.Damage };
 
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => false;
 
         protected float damageBonus = 2f;
         protected float igniteChance = 5;
@@ -33,16 +32,30 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Molten Fork";
         public override string pickupDefault => "Boosts damage against ignited enemies, chance to ignite on hit.";
         public override string descDefault => $"Multiply your damage by {damageBonus} <style=cStack>(+1 to multiplier per stack)</style> against ignited enemies, {igniteChance}% of igniting enemies on hit.";
-        public override string loreDefault => "TBD";
+        public override string loreDefault => "\"I present to you an ancient relic of the gods!\" I saw my partner as he held a shiny little thing on his hand\n" +
+                                              "\n" +
+                                              "\"That just looks like a regular fork with a rare color\". I said as I tried to manipulate the object.\n" +
+                                              "\n" +
+                                              "\"It feels really warm though, maybe we could use it as a heat source.\" I added, the instrument slipped from my hand, landing on the floor and creating a bright spark of fire." +
+                                              "\n" +
+                                              "\"THAT IS COOL AS HECK! We should keep it!\" He exclaimed full of excitement.\n" +
+                                              "\n" +
+                                              "\"How did that even work? Is it reactive to friction?\" I wondered." +
+                                              "\n" +
+                                              "\"I don’t know man, but if we don’t take this incredible device someone else will do it.\" He added, as he tried to recover the instrument from the floor.\n" +
+                                              "\n" +
+                                              "\"Alright, just make sure you don’t end up on fire.\" I told him, as I chuckled a little\n" +
+                                              "\n" +
+                                              "\"Deal.\" He replied.";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             gForkItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);
 
             gForkItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
-            //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
+            gForkItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/molt_fork.png");
             gForkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/molt_fork/MoltFork.prefab");
 
             SetupLanguageTokens();

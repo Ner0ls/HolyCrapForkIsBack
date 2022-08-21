@@ -24,11 +24,14 @@ namespace HolyCrapForkIsBack.Items
     public abstract class ItemBase
     {
         public static string prefix = "HCFB_ITEM_";
-        public abstract bool disabled { get; }
+        public virtual bool forceEnable { get; } = false;
         public abstract string name { get; }
         public abstract ItemTag[] itemTags { get; }
         public abstract bool canRemove { get; }
         public abstract bool hidden { get; }
+        public virtual bool AIBlacklisted { get; set; } = false;
+        public abstract bool dlcRequired { get; }
+
         #region LanguageTokens
         public abstract string nameToken { get; }
         public abstract string pickupToken { get; }
@@ -47,13 +50,13 @@ namespace HolyCrapForkIsBack.Items
 
         //public virtual bool dlcRequired { get; } = false;
 
-        //public ConfigEntry<bool> enabled;
-        //public ConfigEntry<bool> aiBlacklist;
+        public ConfigEntry<bool> enabled;
+        public ConfigEntry<bool> aiBlacklist;
 
         public ItemDef itemDef;
         public static List<ItemBase> items = new List<ItemBase>();
 
-        public abstract void Init();
+        public abstract void Init(ConfigFile config);
 
         //protected virtual void SetupConfig(ConfigFile config) { }
 

@@ -11,13 +11,12 @@ namespace HolyCrapForkIsBack.Items
     public class Spoon : ItemBase<Spoon>
     {
         public static ItemDef spoonItemDef;
-        public override bool disabled => false;
-
         public override string name => prefix + "SPOON";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.Damage, ItemTag.OnKillEffect };
 
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => false;
 
         public float constantDamageBonus = 2f;
         public float damageBonusPerKill = 0.01f;
@@ -43,7 +42,7 @@ namespace HolyCrapForkIsBack.Items
             "\n" +
             "\"After all... What if we need to dig a hole as a shelter? Or pop some monster eyes out?\" I insisted.\n" +
             "\n" +
-            "\"Dig a hole with a spoon...?\" This time he looked at me with a questioning look.\n" +
+            "\"Dig a hole with a spoon...?\" He said in disbelief.\n" +
             "\n" +
             "\"Yeah.\"\n" +
             "\n" +
@@ -54,7 +53,7 @@ namespace HolyCrapForkIsBack.Items
             "\"Probably...\"";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             spoonItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);

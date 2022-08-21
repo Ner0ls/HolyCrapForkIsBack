@@ -1,9 +1,16 @@
 using BepInEx;
 using BepInEx.Configuration;
+using HolyCrapForkIsBack.Items;
 using R2API;
 using R2API.Utils;
 using RoR2;
+using System.Collections.Generic;
+using System;
+using System.Reflection;
+using System.Linq;
 using VoidItemAPI;
+using UnityEngine;
+using RoR2.ExpansionManagement;
 
 namespace HolyCrapForkIsBack
 {
@@ -31,8 +38,10 @@ namespace HolyCrapForkIsBack
         public const string PluginGUID = "com." + PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Ner0ls";
         public const string PluginName = "HolyCrapForkIsBack";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "1.0.0";
         public static PluginInfo PInfo { get; private set; }
+
+        public List<ItemBase> Items = new List<ItemBase>();
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -43,12 +52,46 @@ namespace HolyCrapForkIsBack
 
             Assets.Init();
             Log.LogInfo("Trying to initialize items.");
-            Items.Main.InitializeItems();
+
+            var itemsClasses = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
+
+            foreach (var item in itemsClasses)
+            {
+                ItemBase hcfbItem = (ItemBase)Activator.CreateInstance(item);
+
+                if (hcfbItem.forceEnable || ValidateItem(hcfbItem, Items))
+                {
+                    Log.LogInfo("Initializing item: " + hcfbItem.name);
+                    hcfbItem.Init(Config);
+
+                    //From bubbet's itembase
+                    if (hcfbItem.dlcRequired)
+                    {
+                        hcfbItem.itemDef.requiredExpansion = ExpansionCatalog.expansionDefs.FirstOrDefault(x => x.nameToken == "DLC1_NAME");
+                    }
+                }
+
+            }
 
             //But now we have defined an item, but it doesn't do anything yet. So we'll need to define that ourselves.
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
+        }
+
+        public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
+        {
+            var enabled = Config.Bind<bool>("Item: " + item.nameDefault, "Enable Item?", true, "Should this item appear in runs?").Value;
+            var aiBlacklist = Config.Bind<bool>("Item: " + item.nameDefault, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?").Value;
+            if (enabled)
+            {
+                itemList.Add(item);
+                if (aiBlacklist)
+                {
+                    item.AIBlacklisted = true;
+                }
+            }
+            return enabled;
         }
     }
 }

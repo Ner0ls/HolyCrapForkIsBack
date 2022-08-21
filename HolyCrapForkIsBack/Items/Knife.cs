@@ -11,13 +11,13 @@ namespace HolyCrapForkIsBack.Items
     public class Knife : ItemBase<Knife>
     {
         public static ItemDef knifeItemDef;
-        public override bool disabled => false;
 
         public override string name => prefix + "KNIFE";
         public override ItemTag[] itemTags => new ItemTag[1] { ItemTag.Damage };
 
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => false;
 
         protected float critChanceBonus = 5f;
         protected float critDamageBonus = 0.05f;
@@ -33,24 +33,24 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Knife";
         public override string pickupDefault => "Slightly boosts Critical Damage and Critical Chance.";
         public override string descDefault => $"Gain {critDamageBonus * 100}% Critical Damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style> and {critChanceBonus}% Critical chance <style=cStack>(+{critChanceBonus}% per stack)</style>.";
-        public override string loreDefault => "I was being attacked, dissarmed, we were both at our physical limits. I looked for the closest thing to me, a kitchen knife...\n" +
+        public override string loreDefault => "I was being attacked, dissarmed, we were both at our physical limits. I looked for the closest thing to me, a kitchen knife was laying on the floor...\n" +
                                                 "\n" +
                                                 "\"Hmph, who would've imagined that I would use cutlery in a situation like this.\"\n I thought as I slowly crawled to grab it." +
                                                 "\n" +
-                                                "The assassin got greedy, he wanted to see my face while he steals my last breath, in a flash, I stabbed him, right through his heart.\n" +
+                                                "The attacker was relentless, he wanted to see my face while he stealed my last breath, in a flash, I stabbed him, right through his heart.\n" +
                                                 "\n" +
                                                 "He collapsed to the ground as he looked me dead in the eyes. I knew the face, but not the being...\n" +
                                                 "\n" +
-                                                "\"That's what you get, you sneaky bastard, you took one precious life already, so I took yours\".\n" +
+                                                "\"That's what you get, you sneaky bastard, you took one precious life already, so I took yours.\" I exclaimed, exhausted.\n" +
                                                 "\n" +
-                                                "He was done for.\n" +
+                                                "He was done for. A small little creature crawled from the dead body and escaped, really fast.\n" +
                                                 "\n" +
-                                                "\"How long it will take...\" I thought, as I layed down on the ground.\n" +
+                                                "\"How long it will take...\" I thought, as I sitted on the ground.\n" +
                                                 "\n" +
-                                                "\"I told you we...\"";
+                                                "\"I knew we wouldn't...\" I passed out.";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             knifeItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);

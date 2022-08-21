@@ -11,13 +11,14 @@ namespace HolyCrapForkIsBack.Items
     public class SpoonStack : ItemBase<SpoonStack>
     {
         public static ItemDef spoonStackItemDef;
-        public override bool disabled => false;
+        public override bool forceEnable => true;
 
         public override string name => prefix + "SPOON_STACK";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.Damage, ItemTag.CannotCopy };
 
         public override bool canRemove => false;
         public override bool hidden => true;
+        public override bool dlcRequired => false;
 
         public float constantDamageBonus = 2f;
         public float damageBonusPerKill = 0.01f;
@@ -39,7 +40,7 @@ namespace HolyCrapForkIsBack.Items
         public override string loreDefault => "";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             spoonStackItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);

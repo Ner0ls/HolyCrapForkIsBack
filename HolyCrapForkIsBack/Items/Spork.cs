@@ -13,12 +13,11 @@ namespace HolyCrapForkIsBack.Items
     public class Spork : ItemBase<Spork>
     {
         public static ItemDef sporkItemDef;
-        public override bool disabled => false;
-
         public override string name => prefix + "SPORK";
         public override ItemTag[] itemTags => new ItemTag[4] { ItemTag.Utility, ItemTag.OnKillEffect, ItemTag.OnStageBeginEffect, ItemTag.CannotCopy };
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => true;
 
         public float cooldownBonusPerKill = 0.0005f;
         public float maxStacks = 100;
@@ -51,7 +50,7 @@ namespace HolyCrapForkIsBack.Items
             "A sudden chill went right down my spine as we continued our journey...";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             cooldownBonusCap = maxStacks * cooldownBonusPerKill;
             sporkItemDef = InitializeItemDef();
@@ -59,7 +58,7 @@ namespace HolyCrapForkIsBack.Items
 
             //sporkItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/VoidTier1Def.asset").WaitForCompletion();
             sporkItemDef.deprecatedTier = ItemTier.VoidTier1;
-            sporkItemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            sporkItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/spork.png");
             sporkItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/spork/Spork.prefab");
             HopooShaderToMaterial.Standard.Apply(sporkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
             HopooShaderToMaterial.Standard.Gloss(sporkItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.2f, 5f, Color.white);
@@ -75,15 +74,13 @@ namespace HolyCrapForkIsBack.Items
 
         public void CreateBuff()
         {
-            var strongVFBuffDef = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdVoidFogStrong.asset").WaitForCompletion();
-
             stackBuff = ScriptableObject.CreateInstance<BuffDef>();
             stackBuff.buffColor = Color.magenta;
             stackBuff.canStack = true;
             stackBuff.isDebuff = false;
             stackBuff.isHidden = false;
             stackBuff.name = prefix + "SPORK_STACK_BUFF";
-            stackBuff.iconSprite = strongVFBuffDef.iconSprite;
+            stackBuff.iconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Buffs/sporkStack.png");
 
             ContentAddition.AddBuffDef(stackBuff);
         }

@@ -11,7 +11,6 @@ namespace HolyCrapForkIsBack.Items
     public class Chopsticks : ItemBase<Chopsticks>
     {
         public static ItemDef chopsticksItemDef;
-        public override bool disabled => false;
 
         public override string name => prefix + "CHOPSTICKS";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.Damage, ItemTag.LowHealth };
@@ -22,6 +21,7 @@ namespace HolyCrapForkIsBack.Items
         public float critChanceBonus = 20f;
         public float critDamageBonus = 0.3f;
         public BuffDef recentBreak { get; private set; }
+        public override bool dlcRequired => false;
 
         #region LanguageTokens
         public override string nameToken => prefix + "CHOPSTICKS_NAME";
@@ -34,26 +34,26 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Sharpened Chopsticks";
         public override string pickupDefault => "Boosts critical chance and critical damage, breaks at low health.";
         public override string descDefault => $"Gain +{critChanceBonus}% critical chance <style=cStack>(+{critChanceBonus}% per stack)</style> and {critDamageBonus * 100}% critical damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style>.";
-        public override string loreDefault => "\"So... How would we use this again?\"\n" +
+        public override string loreDefault => "\"So... How would we use this again?\" I asked my partner.\n" +
                                                 "\n" +
                                                 "\"Look, I know you think it’s just a pair of chopsticks, but if you turn them this way...\"\n He held the chopsticks between his fingers." +
                                                 "\n" +
-                                                "\"Why would you throw that? It’s not even sharp...\"\n" +
+                                                "\"Why would you throw that? It’s not even sharp...\" I replied.\n" +
                                                 "\n" +
-                                                "\"Not yet.\"\n" +
+                                                "\"Not yet.\" He insisted, while throwing the chopsticks on his backpack\n" +
                                                 "\n" +
-                                                "\"Why do I bother to debate...\"\n" +
+                                                "\"Why do I bother to debate...\" I said, as I continued foraging the place.\n" +
                                                 "\n" +
-                                                "\"It also looks cool!\"";
+                                                "\"It also looks cool!\" He yelled from the distance.";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             chopsticksItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);
 
             chopsticksItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier2Def.asset").WaitForCompletion();
-            chopsticksItemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            chopsticksItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/sharp_chopsticks.png");
             chopsticksItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/chopsticks/Chopsticks.prefab");
             HopooShaderToMaterial.Standard.Apply(chopsticksItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
 

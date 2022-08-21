@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2466341213
+CRC: 2941090856
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 32a2b2bd9e6d0ec90a632f46480437e8
+    Hash: 9f064517b6af2082773f2573e2ab90a1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fe3abd029edb3522ae5dbbc711d0a74
@@ -29,19 +29,23 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Import/Items/icons/obs_knife.png
 - Assets/Import/Items/models/knife/knifetex.png
+- Assets/Import/Items/models/bul_spoon/Material.001.mat
+- Assets/Import/Buffs/sporkStack.png
 - Assets/Import/Items/models/molt_fork/MoltFork.prefab
+- Assets/Import/Items/icons/bul_spoon.png
 - Assets/Import/Items/models/spork/cumchanedor.fbx
 - Assets/Import/Items/models/metal.png
 - Assets/Import/Items/models/fork/cumnedor.fbx
 - Assets/Import/Items/models/obs_knife/blackcumomg.fbx
-- Assets/Import/Items/icons/Spoon.png
+- Assets/Import/Items/icons/spoon.png
 - Assets/Import/Items/models/obs_knife/obsidian.png
 - Assets/Import/Items/models/fork/Fork.prefab
 - Assets/Import/Items/models/spoon/Spoon.prefab
-- Assets/Import/Items/models/bul_spoon/cumrock.fbx
 - Assets/Import/Items/models/spoon/cumchara.fbx
 - Assets/Import/Items/models/spork/Spork.prefab
+- Assets/Import/Items/models/bul_spoon/Materials/ROCKcumtex 1.mat
 - Assets/Import/Buffs/spoonStack.png
 - Assets/Import/Items/models/chopsticks/Chopsticks.prefab
 - Assets/Import/Items/models/bul_spoon/BulSpoon.prefab
@@ -49,18 +53,23 @@ Assets:
 - Assets/Import/Items/models/molt_fork/a1.png
 - Assets/Import/Items/models/knife/Knife.prefab
 - Assets/Import/Items/models/knife/Materials/knifetex.mat
+- Assets/Import/Items/icons/sharp_chopsticks.png
 - Assets/Import/Items/models/obs_knife/ObsKnife.prefab
+- Assets/Import/Items/models/bul_spoon/cumrock.fbx
 - Assets/Import/Items/models/molt_fork/mdlMoltFork.mat
 - Assets/Import/Items/models/obs_knife/Materials/obsidian.mat
+- Assets/Import/Items/models/bul_spoon/ROCKcumtex.png
 - Assets/Import/Items/models/chopsticks/mdlChopsticks.mesh
 - Assets/Import/Items/models/chopsticks/Materials/cumsticktex.mat
-- Assets/Import/Items/icons/Fork.png
-- Assets/Import/Items/icons/Knife.png
+- Assets/Import/Items/icons/fork.png
+- Assets/Import/Items/icons/knife.png
 - Assets/Import/Items/models/metal.mat
 - Assets/Import/Items/models/knife/cumchillo.fbx
 - Assets/Import/Items/models/chopsticks/cumsticktex.png
 - Assets/Import/Items/models/molt_fork/shinycum.fbx
-- Assets/Import/Items/models/bul_spoon/ROCKcumtex.png
 - Assets/Import/Items/models/spork/texturespork.png
 - Assets/Import/Items/models/molt_fork/a2.png
+- Assets/Import/Items/models/spork/Material.mat
+- Assets/Import/Items/icons/molt_fork.png
+- Assets/Import/Items/icons/spork.png
 Dependencies: []

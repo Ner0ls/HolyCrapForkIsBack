@@ -11,13 +11,13 @@ namespace HolyCrapForkIsBack.Items
     public class BulwarkSpoon : ItemBase<BulwarkSpoon>
     {
         public static ItemDef gSpoonItemDef;
-        public override bool disabled => false;
 
         public override string name => prefix + "BULWARK_SPOON";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.OnKillEffect, ItemTag.Utility };
 
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => false;
 
         protected float barrierOnKill = 30f;
         protected float damageBonus = 0.20f;
@@ -38,16 +38,28 @@ namespace HolyCrapForkIsBack.Items
         public override string descDefault => $"Gain {barrierOnKill} barrier on kill.\n" +
             $"Increases your damage by {damageBonus * 100}% <style=cStack>(+{damageBonus * 100}% per stack)</style>, your armor by {armorBonus} <style=cStack>(+{armorBonus} per stack)</style> " +
             $"and reduces your cooldowns by {cdrBonus * 100}% <style=cStack>(+{cdrPerStack * 100}% per stack)</style> in relation of the current percent of barrier you have over your combined health.";
-        public override string loreDefault => "TBD";
+        public override string loreDefault => "For all my followers.\n" +
+                                              "\n" +
+                                              "This is a piece of myself.\n" +
+                                              "\n" +
+                                              "This is the way to show your devotion.\n" +
+                                              "\n" +
+                                              "This is our bond, our connection.\n" +
+                                              "\n" +
+                                              "This is our emblem, our identity.\n" +
+                                              "\n" +
+                                              "This is my will.\n" +
+                                              "\n" +
+                                              "This… is… the reminder.\n";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             gSpoonItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);
 
             gSpoonItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
-            //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
+            gSpoonItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/bul_spoon.png");
             gSpoonItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/bul_spoon/BulSpoon.prefab");
             HopooShaderToMaterial.Standard.Apply(gSpoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
             HopooShaderToMaterial.Standard.Gloss(gSpoonItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.1f, 1f, Color.white);

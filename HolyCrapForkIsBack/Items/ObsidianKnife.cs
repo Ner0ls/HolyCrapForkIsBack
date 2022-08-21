@@ -11,13 +11,12 @@ namespace HolyCrapForkIsBack.Items
     public class ObsidianKnife : ItemBase<ObsidianKnife>
     {
         public static ItemDef gKnifeItemDef;
-        public override bool disabled => false;
-
         public override string name => prefix + "OBSIDIAN_KNIFE";
         public override ItemTag[] itemTags => new ItemTag[1] { ItemTag.Damage };
 
         public override bool canRemove => false;
         public override bool hidden => false;
+        public override bool dlcRequired => false;
 
         protected float critDamageBonus = 0.5f;
         protected float hemoDotChance = 10;
@@ -33,16 +32,24 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Obsidian Knife";
         public override string pickupDefault => "Increases critical damage, critical hits have a chance to apply hemorrhage.";
         public override string descDefault => $"Gain {critDamageBonus * 100}% Critical Damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style>, critical hits have a {hemoDotChance}% chance (+{hemoDotChance}% per stack) to apply Hemorrhage.";
-        public override string loreDefault => "TBD";
+        public override string loreDefault => "\"Here it is, your excellence, the sharpest tool of this world.\"\n" +
+                                              "\n" +
+                                              "\"A knife, forged in the hardest material, capable of cutting flesh like air.\"\n" +
+                                              "\n" +
+                                              "\"I present this to you, as my gift, as a way to honor you.\"\n" +
+                                              "\n" +
+                                              "“Perfect. Bring the offerings, we shall celebrate this gift in her name.”\n" +
+                                              "\n" +
+                                              "\"As you wish my lord.\"";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             gKnifeItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);
 
             gKnifeItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
-            //gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/knife.png");
+            gKnifeItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/obs_knife.png");
             gKnifeItemDef.pickupModelPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("Assets/Import/Items/models/obs_knife/ObsKnife.prefab");
             HopooShaderToMaterial.Standard.Apply(gKnifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial);
             HopooShaderToMaterial.Standard.Emission(gKnifeItemDef.pickupModelPrefab.GetComponentInChildren<Renderer>().sharedMaterial, 0.001f, Color.white);

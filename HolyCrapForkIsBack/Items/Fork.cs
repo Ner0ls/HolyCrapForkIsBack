@@ -11,13 +11,13 @@ namespace HolyCrapForkIsBack.Items
     public class Fork : ItemBase<Fork>
     {
         public static ItemDef forkItemDef;
-        public override bool disabled => false;
         public override string name => prefix + "FORK";
         public override ItemTag[] itemTags => new ItemTag[1] { ItemTag.Damage };
 
         public override bool canRemove => false;
         public override bool hidden => false;
-        
+        public override bool dlcRequired => false;
+
         public float damageBonus = 3f;
         public float damageBonusPerStack = 3f;
 
@@ -32,10 +32,18 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Fork";
         public override string pickupDefault => "Do more damage.";
         public override string descDefault => $"Gain +{damageBonus} Base Damage <style=cStack>(+{damageBonusPerStack} per stack)</style>.";
-        public override string loreDefault => "Totally original idea";
+        public override string loreDefault => "\"You can't be serious... Look, I know we said we need everything we can get to survive, but you have to realize I wasn't literal about it!\"\n" +
+                                              "\n" +
+                                              "He held up the silver instrument, a questioning look on his face. \"What do you mean? What if we need to fight off a monster?\"\n" +
+                                              "\n" +
+                                              "A brief silence.\n" +
+                                              "\n" +
+                                              "\"Please, we've both seen the creatures on this planet. Don't tell me you think that'd be enough to fight off anything here.\"\n" +
+                                              "\n" + 
+                                              "He shrugged. \"You never know\", he replied, as he slid the fork into his pocket.\n";
         #endregion
 
-        public override void Init()
+        public override void Init(ConfigFile config)
         {
             forkItemDef = InitializeItemDef();
             displayRules = new ItemDisplayRuleDict(null);
