@@ -5,14 +5,14 @@ Uninspired item mod by yours truly.
 It currently adds 4 white items (Including 1 Void counterpart!), 1 green item and 3 red items.
 | Icon | Item | Tier | Description
 |--|--|--|--|
-|![fork icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/fork.png?raw=true =128x)| Fork | White | Do more damage.
-|![spoon icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spoon.png?raw=true =128x)| Spoon | White | Do more damage, stack more damage each time you kill an enemy.
-|![spork icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spork.png?raw=true =128x)| Spork (Void Spoon) | Void White | Gain cooldown reduction per kill, resets every stage or if you die. Corrupts all Spoons
-|![knife icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/knife.png?raw=true =128x)| Knife | White | Slightly boosts Critical Damage and Critical Chance.
-|![sharp chopsticks icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/sharp_chopsticks.png?raw=true =128x)| Sharpened Chopsticks | Green | Boosts critical chance and critical damage, breaks at low health..
-|![bulwark icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/bul_spoon.png?raw=true =128x)| Bulwark Spoon | Red | Gives Barrier on kill, increases your stats in relation of your current barrier value.
-|![molten fork icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/molt_fork.png?raw=true =128x)| Molten Fork | Red | Boosts damage against ignited enemies, chance to ignite on hit.
-|![obsidian knife icon](https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/obs_knife.png?raw=true =128x)| Obsidian Knife | Red | Increases critical damage, critical hits have a chance to apply hemorrhage.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/fork.png?raw=true" height="128">| Fork | White | Do more damage.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spoon.png?raw=true" height="128">| Spoon | White | Do more damage, stack more damage each time you kill an enemy.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spork.png?raw=true" height="128">| Spork (Void Spoon) | Void White | Gain cooldown reduction per kill, resets every stage or if you die. Corrupts all Spoons
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/knife.png?raw=true" height="128">| Knife | White | Slightly boosts Critical Damage and Critical Chance.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/sharp_chopsticks.png?raw=true" height="128">| Sharpened Chopsticks | Green | Boosts critical chance and critical damage, breaks at low health..
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/bul_spoon.png?raw=true" height="128">| Bulwark Spoon | Red | Gives Barrier on kill, increases your stats in relation of your current barrier value.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/molt_fork.png?raw=true" height="128">| Molten Fork | Red | Boosts damage against ignited enemies, chance to ignite on hit.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/obs_knife.png?raw=true" height="128">| Obsidian Knife | Red | Increases critical damage, critical hits have a chance to apply hemorrhage.
 
 ## TO DO
 * Configs for Item balance
