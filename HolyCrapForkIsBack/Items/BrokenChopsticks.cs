@@ -42,7 +42,7 @@ namespace HolyCrapForkIsBack.Items
 
             //brokenChopsticksItemDef._itemTierDef = null;
             brokenChopsticksItemDef.deprecatedTier = ItemTier.NoTier;
-            brokenChopsticksItemDef.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            brokenChopsticksItemDef.pickupIconSprite = Assets.mainAssetBundle.LoadAsset<Sprite>("Assets/Import/Items/icons/broken_sharp_chopsticks.png"); ;
             brokenChopsticksItemDef.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
             
             SetupLanguageTokens();

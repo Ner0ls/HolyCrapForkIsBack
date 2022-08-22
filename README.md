@@ -33,6 +33,12 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 ## Changelog
 **1.0.0**
 
+-   Fixed null reference on spoon item
+-	Implemented broken chopsticks icon
+-	Corrected ""transformation" of sharpened chopsticks
+
+**1.0.0**
+
 -   Implemented item icons
 -   Obsidian knife rebalance
 -   Implemented config for toggling items on and off

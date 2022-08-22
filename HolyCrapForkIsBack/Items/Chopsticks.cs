@@ -80,7 +80,7 @@ namespace HolyCrapForkIsBack.Items
 
                 if (grabCount > 0)
                 {
-                    CharacterMasterNotificationQueue.PushItemTransformNotification(characterBody.master, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    CharacterMasterNotificationQueue.PushItemTransformNotification(characterBody.master, chopsticksItemDef.itemIndex, ItemBase<BrokenChopsticks>.instance.itemDef.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
                     characterBody.inventory.RemoveItem(chopsticksItemDef, grabCount);
                     characterBody.inventory.GiveItem(ItemBase<BrokenChopsticks>.instance.itemDef, grabCount);
                 }
