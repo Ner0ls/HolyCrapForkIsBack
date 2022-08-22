@@ -16,6 +16,8 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 
 ## TO DO
 * Configs for Item balance
+* Item display rules
+* BetterUI compat
 * More Items:
 	* Knork (Equip)
 	* Spife (Lunar Equip)
