@@ -31,7 +31,7 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
-**1.0.0**
+**1.0.1**
 
 -   Fixed null reference on spoon item
 -	Implemented broken chopsticks icon
