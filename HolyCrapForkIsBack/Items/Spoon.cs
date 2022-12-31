@@ -110,17 +110,20 @@ namespace HolyCrapForkIsBack.Items
 
         private void CharacterBody_onBodyStartGlobal(CharacterBody characterBody)
         {
-            var grabCount = characterBody.inventory.GetItemCount(spoonItemDef.itemIndex);
-
-            if (characterBody != null && characterBody.inventory && grabCount > 0)
+            if (characterBody.inventory)
             {
-                var stacksGrabCount = characterBody.inventory.GetItemCount(SpoonStack.spoonStackItemDef.itemIndex);
+                var grabCount = characterBody.inventory.GetItemCount(spoonItemDef.itemIndex);
 
-                if (stacksGrabCount > 0)
+                if (grabCount > 0)
                 {
-                    for (var x = 0; x < stacksGrabCount; x++)
+                    var stacksGrabCount = characterBody.inventory.GetItemCount(SpoonStack.spoonStackItemDef.itemIndex);
+
+                    if (stacksGrabCount > 0)
                     {
-                        characterBody.AddBuff(stackBuff);
+                        for (var x = 0; x < stacksGrabCount; x++)
+                        {
+                            characterBody.AddBuff(stackBuff);
+                        }
                     }
                 }
             }
