@@ -33,7 +33,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Spork";
         public override string pickupDefault => "Gain cooldown reduction per kill, resets every stage or if you die. <style=cIsVoid>Corrupts all Spoons</style>";
-        public override string descDefault => $"Gain +{cooldownBonusPerKill * 100}% <style=cStack>(+{cooldownBonusPerKill * 100}% per stack)</style> cooldown reduction each time you <style=cIsDamage>kill an enemy</style> with a max cap of {cooldownBonusCap * 100}% <style=cStack>(+{cooldownBonusCap * 100}% per stack)</style>, buff's max stacks is {maxStacks}, resets every stage or if you die. <style=cIsVoid>Corrupts all Spoons</style>";
+        public override string descDefault => $"Gain +{cooldownBonusPerKill * 100}% <style=cIsUtility>Cooldown Reduction</style> <style=cStack>(+{cooldownBonusPerKill * 100}% per stack)</style> each time you <style=cIsDamage>kill an enemy</style> with a max cap of {cooldownBonusCap * 100}% <style=cStack>(+{cooldownBonusCap * 100}% per stack)</style>, caps at {maxStacks} stacks, resets every <style=cEvent>Stage</style> or if you <style=cDeath>Die</style>. <style=cIsVoid>Corrupts all Spoons</style>";
 
         public override string loreDefault => "\"Oh wow this one looks freaky\" He said.\n" +
             "\n" +

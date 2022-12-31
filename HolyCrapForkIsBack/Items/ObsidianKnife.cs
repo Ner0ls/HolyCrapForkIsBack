@@ -31,7 +31,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Obsidian Knife";
         public override string pickupDefault => "Increases critical damage, critical hits have a chance to apply hemorrhage.";
-        public override string descDefault => $"Gain {critDamageBonus * 100}% Critical Damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style>, critical hits have a {hemoDotChance}% chance (+{hemoDotChance}% per stack) to apply Hemorrhage.";
+        public override string descDefault => $"Gain {critDamageBonus * 100}% <style=cIsDamage>Critical Damage</style> <style=cStack>(+{critDamageBonus * 100}% per stack)</style>, <style=cIsDamage>Critical Strikes</style> have a {hemoDotChance}% chance <style=cStack>(+{hemoDotChance}% per stack)</style> to apply <style=cDeath>Hemorrhage</style>.";
         public override string loreDefault => "\"Here it is, your excellence, the sharpest tool of this world.\"\n" +
                                               "\n" +
                                               "\"A knife, forged in the hardest material, capable of cutting flesh like air.\"\n" +

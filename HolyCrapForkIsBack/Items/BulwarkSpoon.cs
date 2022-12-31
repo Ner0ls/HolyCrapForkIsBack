@@ -36,8 +36,8 @@ namespace HolyCrapForkIsBack.Items
         public override string nameDefault => "Bulwark Spoon";
         public override string pickupDefault => "Gain barrier on kill.\nIncreases your stats in relation of your current barrier value.";
         public override string descDefault => $"Gain {barrierOnKill} barrier on kill.\n" +
-            $"Increases your damage by {damageBonus * 100}% <style=cStack>(+{damageBonus * 100}% per stack)</style>, your armor by {armorBonus} <style=cStack>(+{armorBonus} per stack)</style> " +
-            $"and reduces your cooldowns by {cdrBonus * 100}% <style=cStack>(+{cdrPerStack * 100}% per stack)</style> in relation of the current percent of barrier you have over your combined health.";
+            $"Progressively increases your <style=cIsDamage>Base Damage</style> up to {damageBonus * 100}% <style=cStack>(+{damageBonus * 100}% per stack)</style>, your <style=cSub>Armor</style> up to {armorBonus} <style=cStack>(+{armorBonus} per stack)</style> " +
+            $"and <style=cIsUtility>Cooldown Reduction</style> up to {cdrBonus * 100}% <style=cStack>(+{cdrPerStack * 100}% per stack)</style> in relation of the current percent of barrier you have over your combined health.";
         public override string loreDefault => "For all my followers.\n" +
                                               "\n" +
                                               "This is a piece of myself.\n" +

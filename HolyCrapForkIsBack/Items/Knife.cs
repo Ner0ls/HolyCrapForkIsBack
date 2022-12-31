@@ -32,7 +32,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Knife";
         public override string pickupDefault => "Slightly boosts Critical Damage and Critical Chance.";
-        public override string descDefault => $"Gain {critDamageBonus * 100}% Critical Damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style> and {critChanceBonus}% Critical chance <style=cStack>(+{critChanceBonus}% per stack)</style>.";
+        public override string descDefault => $"Gain {critDamageBonus * 100}% <style=cIsDamage>Critical Damage</style> <style=cStack>(+{critDamageBonus * 100}% per stack)</style> and {critChanceBonus}% <style=cIsDamage>Critical Chance</style> <style=cStack>(+{critChanceBonus}% per stack)</style>.";
         public override string loreDefault => "I was being attacked, dissarmed, we were both at our physical limits. I looked for the closest thing to me, a kitchen knife was laying on the floor...\n" +
                                                 "\n" +
                                                 "\"Hmph, who would've imagined that I would use cutlery in a situation like this.\"\n I thought as I slowly crawled to grab it." +

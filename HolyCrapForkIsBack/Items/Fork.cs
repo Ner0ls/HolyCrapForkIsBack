@@ -31,7 +31,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Fork";
         public override string pickupDefault => "Do more damage.";
-        public override string descDefault => $"Gain +{damageBonus} Base Damage <style=cStack>(+{damageBonusPerStack} per stack)</style>.";
+        public override string descDefault => $"Gain +{damageBonus} <style=cIsDamage>Base Damage</style> <style=cStack>(+{damageBonusPerStack} per stack)</style>.";
         public override string loreDefault => "\"You can't be serious... Look, I know we said we need everything we can get to survive, but you have to realize I wasn't literal about it!\"\n" +
                                               "\n" +
                                               "He held up the silver instrument, a questioning look on his face. \"What do you mean? What if we need to fight off a monster?\"\n" +

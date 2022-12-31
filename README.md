@@ -9,10 +9,10 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 |<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spoon.png?raw=true" height="128">| Spoon | White | Do more damage, stack more damage each time you kill an enemy.
 |<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/spork.png?raw=true" height="128">| Spork (Void Spoon) | Void White | Gain cooldown reduction per kill, resets every stage or if you die. Corrupts all Spoons
 |<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/knife.png?raw=true" height="128">| Knife | White | Slightly boosts Critical Damage and Critical Chance.
-|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/sharp_chopsticks.png?raw=true" height="128">| Sharpened Chopsticks | Green | Boosts critical chance and critical damage, breaks at low health..
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/sharp_chopsticks.png?raw=true" height="128">| Sharpened Chopsticks | Green | Boosts Critical Chance and Critical Damage, breaks at low health.
 |<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/bul_spoon.png?raw=true" height="128">| Bulwark Spoon | Red | Gives Barrier on kill, increases your stats in relation of your current barrier value.
 |<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/molt_fork.png?raw=true" height="128">| Molten Fork | Red | Boosts damage against ignited enemies, chance to ignite on hit.
-|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/obs_knife.png?raw=true" height="128">| Obsidian Knife | Red | Increases critical damage, critical hits have a chance to apply hemorrhage.
+|<img src="https://github.com/Ner0ls/HolyCrapForkIsBack/blob/main/Final%20Icons/obs_knife.png?raw=true" height="128">| Obsidian Knife | Red | Increases Critical Damage, Critical hits have a chance to apply Hemorrhage.
 
 ## TO DO
 * Configs for Item balance
@@ -33,6 +33,12 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
+**1.0.2**
+
+-   Fixed null reference on spoon item (for real this time lol, thanks ImBonkers)
+-	Added breaking message on Chopsticks long description
+-	Rewrote some long descriptions to improve clarity and include more color coded text
+
 **1.0.1**
 
 -   Fixed null reference on spoon item

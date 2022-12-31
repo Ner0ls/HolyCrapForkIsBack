@@ -32,8 +32,8 @@ namespace HolyCrapForkIsBack.Items
 
         #region DefaultLanguage
         public override string nameDefault => "Sharpened Chopsticks";
-        public override string pickupDefault => "Boosts critical chance and critical damage, breaks at low health.";
-        public override string descDefault => $"Gain +{critChanceBonus}% critical chance <style=cStack>(+{critChanceBonus}% per stack)</style> and {critDamageBonus * 100}% critical damage <style=cStack>(+{critDamageBonus * 100}% per stack)</style>.";
+        public override string pickupDefault => "Boosts Critical Chance and Critical Damage, breaks at low health.";
+        public override string descDefault => $"Gain +{critChanceBonus}% <style=cIsDamage>Critical Chance</style> <style=cStack>(+{critChanceBonus}% per stack)</style> and {critDamageBonus * 100}% <style=cIsDamage>Critical Damage</style> <style=cStack>(+{critDamageBonus * 100}% per stack)</style>. Taking damage to below <style=cIsHealth>25% health</style> <style=cIsUtility>breaks</style> this item.";
         public override string loreDefault => "\"So... How would we use this again?\" I asked my partner.\n" +
                                                 "\n" +
                                                 "\"Look, I know you think it’s just a pair of chopsticks, but if you turn them this way...\"\n He held the chopsticks between his fingers." +
