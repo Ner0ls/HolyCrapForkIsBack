@@ -1,5 +1,7 @@
 # Holy Crap! Fork is Back!
 
+PSA: As Starstorm 2 became available in the current RoR2 version, I recommend disabling the Fork item of this mod if you're gonna use Starstorm 2.
+
 Uninspired item mod by yours truly.
 
 It currently adds 4 white items (Including 1 Void counterpart!), 1 green item and 3 red items.
@@ -33,6 +35,10 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
+**1.0.3**
+
+- I forgot to rewrite Molten Fork's description lmao
+
 **1.0.2**
 
 -   Fixed null reference on spoon item (for real this time lol, thanks ImBonkers)

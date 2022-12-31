@@ -31,7 +31,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Molten Fork";
         public override string pickupDefault => "Boosts damage against ignited enemies, chance to ignite on hit.";
-        public override string descDefault => $"Multiply your damage by {damageBonus} <style=cStack>(+1 to multiplier per stack)</style> against ignited enemies, {igniteChance}% of igniting enemies on hit.";
+        public override string descDefault => $"Multiply your <style=cIsDamage>Damage</style> by {damageBonus} <style=cStack>(+1 to multiplier per stack)</style> against <style=cIsDamage>Ignited</style> enemies, {igniteChance}% of <style=cIsDamage>Igniting</style> enemies <style=cIsDamage>on hit</style>.";
         public override string loreDefault => "\"I present to you an ancient relic of the gods!\" I saw my partner as he held a shiny little thing on his hand\n" +
                                               "\n" +
                                               "\"That just looks like a regular fork with a rare color\". I said as I tried to manipulate the object.\n" +
