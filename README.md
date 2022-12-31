@@ -38,6 +38,7 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 **1.0.3**
 
 - I forgot to rewrite Molten Fork's description lmao
+- Added PSA for Starstorm 2 on Readme
 
 **1.0.2**
 
