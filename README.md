@@ -35,6 +35,11 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
+**1.0.4**
+
+- Buffed Spoon, +0.02 Base Damage per stack, max stacks reduced to 50, so it stacks faster now. Also now it scales with 25% of player level (This is a buff, it mistakenly said on the description that it scaled with 30% of PL, in reality it scaled with 20% of PL).
+- Have fun digging holes I guess
+
 **1.0.3**
 
 - I forgot to rewrite Molten Fork's description lmao

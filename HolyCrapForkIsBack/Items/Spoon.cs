@@ -19,7 +19,7 @@ namespace HolyCrapForkIsBack.Items
         public override bool dlcRequired => false;
 
         public float constantDamageBonus = 2f;
-        public float damageBonusPerKill = 0.01f;
+        public float damageBonusPerKill = 0.02f;
         public float damageBonusCap = 1f;
 
         public BuffDef stackBuff { get; set; }
@@ -34,7 +34,7 @@ namespace HolyCrapForkIsBack.Items
         #region DefaultLanguage
         public override string nameDefault => "Spoon";
         public override string pickupDefault => "Do more damage, stack more damage each time you kill an enemy.";
-        public override string descDefault => $"Gain +{constantDamageBonus} base damage <style=cStack>(does not scale in any way)</style> and +{damageBonusPerKill} base damage <style=cStack>(scales 30% with player level)</style> each time you <style=cIsDamage>kill an enemy</style> with a max cap of {damageBonusCap} <style=cStack>(+{damageBonusCap} per stack)</style>.";
+        public override string descDefault => $"Gain +{constantDamageBonus} base damage <style=cStack>(does not scale in any way)</style> and +{damageBonusPerKill} base damage <style=cStack>(scales 25% with player level)</style> each time you <style=cIsDamage>kill an enemy</style> with a max cap of {damageBonusCap} <style=cStack>(+{damageBonusCap} per stack)</style>.";
 
         public override string loreDefault => "\"Well, if you said that could be useful, why can't I try with this?\" I exclaimed.\n" +
             "\n" +

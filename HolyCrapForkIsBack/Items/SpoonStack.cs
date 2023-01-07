@@ -20,10 +20,8 @@ namespace HolyCrapForkIsBack.Items
         public override bool hidden => true;
         public override bool dlcRequired => false;
 
-        public float constantDamageBonus = 2f;
-        public float damageBonusPerKill = 0.01f;
-        public float damageBonusCap = 1f;
-        public float levelScalingF = 0.20f;
+        public float damageBonusPerKill = 0.02f;
+        public float levelScalingF = 0.25f;
 
         #region LanguageTokens
         public override string nameToken => prefix + "SPOON_STACK_NAME";
@@ -34,7 +32,7 @@ namespace HolyCrapForkIsBack.Items
 
         #region DefaultLanguage
         public override string nameDefault => "Spoon Stack";
-        public override string pickupDefault => "What are you doing with this?.";
+        public override string pickupDefault => "What are you doing with this?";
         public override string descDefault => "";
 
         public override string loreDefault => "";
