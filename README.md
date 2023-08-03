@@ -35,6 +35,11 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 
 ## Changelog
+**1.0.5**
+
+- Buffed Spork to make it inline with his non-void counterpart. Double the CDR! Halve the stacks! Yay! (5% CDR (+5% per stack) with 50 kills)
+- Have fun uh... sporking things
+
 **1.0.4**
 
 - Buffed Spoon, +0.02 Base Damage per stack, max stacks reduced to 50, so it stacks faster now. Also now it scales with 25% of player level (This is a buff, it mistakenly said on the description that it scaled with 30% of PL, in reality it scaled with 20% of PL).

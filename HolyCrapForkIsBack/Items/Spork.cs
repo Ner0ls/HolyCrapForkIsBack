@@ -19,8 +19,8 @@ namespace HolyCrapForkIsBack.Items
         public override bool hidden => false;
         public override bool dlcRequired => true;
 
-        public float cooldownBonusPerKill = 0.0005f;
-        public float maxStacks = 100;
+        public float cooldownBonusPerKill = 0.0010f;
+        public float maxStacks = 50;
         public float cooldownBonusCap;
         public BuffDef stackBuff { get; private set; }
         #region LanguageTokens

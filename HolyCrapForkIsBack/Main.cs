@@ -38,7 +38,7 @@ namespace HolyCrapForkIsBack
         public const string PluginGUID = "com." + PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Ner0ls";
         public const string PluginName = "HolyCrapForkIsBack";
-        public const string PluginVersion = "1.0.4";
+        public const string PluginVersion = "1.0.5";
         public static PluginInfo PInfo { get; private set; }
 
         public List<ItemBase> Items = new List<ItemBase>();
