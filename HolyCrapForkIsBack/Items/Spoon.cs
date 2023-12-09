@@ -14,7 +14,7 @@ namespace HolyCrapForkIsBack.Items
         public override string name => prefix + "SPOON";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.Damage, ItemTag.OnKillEffect };
 
-        public override bool canRemove => false;
+        public override bool canRemove => true;
         public override bool hidden => false;
         public override bool dlcRequired => false;
 

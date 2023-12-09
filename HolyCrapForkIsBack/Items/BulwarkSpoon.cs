@@ -15,7 +15,7 @@ namespace HolyCrapForkIsBack.Items
         public override string name => prefix + "BULWARK_SPOON";
         public override ItemTag[] itemTags => new ItemTag[2] { ItemTag.OnKillEffect, ItemTag.Utility };
 
-        public override bool canRemove => false;
+        public override bool canRemove => true;
         public override bool hidden => false;
         public override bool dlcRequired => false;
 

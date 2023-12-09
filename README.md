@@ -33,8 +33,14 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * Mystic:  Hopoo Shader's class
 * borbo & orange_peel: Feedback and ideas
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
+* ImBonkers: Corrected a Spoon digging bug
+
 
 ## Changelog
+**1.0.6**
+
+- Fixed mod items so they can be scrapped
+
 **1.0.5**
 
 - Buffed Spork to make it inline with his non-void counterpart. Double the CDR! Halve the stacks! Yay! (5% CDR (+5% per stack) with 50 kills)
