@@ -6,7 +6,8 @@ using UnityEngine;
 using RoR2;
 using R2API;
 using UnityEngine.AddressableAssets;
-using VoidItemAPI;
+using HG;
+using System.Linq;
 
 namespace HolyCrapForkIsBack.Items
 {
@@ -69,7 +70,16 @@ namespace HolyCrapForkIsBack.Items
 
             ItemAPI.Add(new CustomItem(sporkItemDef, displayRules));
 
-            VoidTransformation.CreateTransformation(sporkItemDef, ItemBase<Spoon>.instance.itemDef);
+            On.RoR2.Items.ContagiousItemManager.Init += orig =>
+            {
+                ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] =
+                ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Append(new()
+                {
+                    itemDef1 = sporkItemDef,
+                    itemDef2 = ItemBase<Spoon>.instance.itemDef
+                }).ToArray();
+                orig();
+            };
         }
 
         public void CreateBuff()

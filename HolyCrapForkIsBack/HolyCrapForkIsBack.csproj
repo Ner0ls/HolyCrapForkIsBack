@@ -74,9 +74,6 @@
       <HintPath>libs\SimpleJSON.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="VoidItemAPI">
-      <HintPath>..\..\libs\VoidItemAPI-nstrip.dll</HintPath>
-    </Reference>
     <Reference Include="Zio">
       <HintPath>libs\Zio.dll</HintPath>
       <Private>false</Private>
