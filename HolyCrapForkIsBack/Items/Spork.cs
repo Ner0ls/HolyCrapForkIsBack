@@ -72,6 +72,7 @@ namespace HolyCrapForkIsBack.Items
 
             On.RoR2.Items.ContagiousItemManager.Init += orig =>
             {
+                if (!ItemBase<Spoon>.instance.enabled.Value) return;
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] =
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Append(new()
                 {
