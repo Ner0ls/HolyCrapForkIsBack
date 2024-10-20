@@ -37,6 +37,11 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 
 
 ## Changelog
+**1.0.7**
+
+- Fixed mod for SotS
+- Ported mod off VoidItemAPI
+
 **1.0.6**
 
 - Fixed mod items so they can be scrapped
