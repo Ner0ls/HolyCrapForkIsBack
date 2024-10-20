@@ -1,12 +1,11 @@
 ﻿{
 	"name": "HolyCrapForkIsBack",
-	"version_number": "1.0.6",
+	"version_number": "1.0.7",
 	"website_url": "https://github.com/Ner0ls/HolyCrapForkIsBack",
 	"description": "Uninspired item mod, AKA Nerols' cutlery",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9",
 		"RiskofThunder-HookGenPatcher-1.2.1",
-		"tristanmcpherson-R2API-4.4.1",
-		"RumblingJOSEPH-VoidItemAPI-1.1.0"
+		"tristanmcpherson-R2API-4.4.1"
 	]
 }

@@ -34,9 +34,14 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * borbo & orange_peel: Feedback and ideas
 * Risk of Rain 2 Modding Community: Love you guys, even if you kinda get pissed with my stupid questions <3
 * ImBonkers: Corrected a Spoon digging bug
-
+* prod: sots fix
 
 ## Changelog
+**1.0.7**
+
+- Fixed mod for SotS
+- Ported mod off VoidItemAPI
+
 **1.0.6**
 
 - Fixed mod items so they can be scrapped
