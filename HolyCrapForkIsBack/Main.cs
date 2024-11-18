@@ -78,12 +78,12 @@ namespace HolyCrapForkIsBack
 
         public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
         {
-            var enabled = Config.Bind<bool>("Item: " + item.nameDefault, "Enable Item?", true, "Should this item appear in runs?").Value;
-            var aiBlacklist = Config.Bind<bool>("Item: " + item.nameDefault, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?").Value;
-            if (enabled)
+            item.enabled = Config.Bind<bool>("Item: " + item.nameDefault, "Enable Item?", true, "Should this item appear in runs?");
+            item.aiBlacklist = Config.Bind<bool>("Item: " + item.nameDefault, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?");
+            if (item.enabled.Value)
             {
                 itemList.Add(item);
-                if (aiBlacklist)
+                if (item.aiBlacklist.Value)
                 {
                     item.AIBlacklisted = true;
                 }
