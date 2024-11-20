@@ -72,12 +72,12 @@ namespace HolyCrapForkIsBack.Items
 
             On.RoR2.Items.ContagiousItemManager.Init += orig =>
             {
-                if (!ItemBase<Spoon>.instance.enabled.Value) return;
+                if (!Spoon.instance.enabled.Value) return;
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] =
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Append(new()
                 {
                     itemDef1 = sporkItemDef,
-                    itemDef2 = ItemBase<Spoon>.instance.itemDef
+                    itemDef2 = Spoon.instance.itemDef
                 }).ToArray();
                 orig();
             };
