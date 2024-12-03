@@ -37,6 +37,10 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * prod: sots fix
 
 ## Changelog
+**1.0.8**
+
+- Fix game crash when loading
+
 **1.0.7**
 
 - Fixed mod for SotS
