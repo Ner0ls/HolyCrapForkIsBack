@@ -37,6 +37,10 @@ It currently adds 4 white items (Including 1 Void counterpart!), 1 green item an
 * prod: sots fix
 
 ## Changelog
+**1.0.9**
+
+- Fixed Spork corrupting into Spoon (instead of other way around)
+
 **1.0.8**
 
 - Fix game crash when loading

@@ -76,8 +76,8 @@ namespace HolyCrapForkIsBack.Items
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] =
                 ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Append(new()
                 {
-                    itemDef1 = sporkItemDef,
-                    itemDef2 = Spoon.instance.itemDef
+                    itemDef1 = Spoon.instance.itemDef,
+                    itemDef2 = sporkItemDef
                 }).ToArray();
                 orig();
             };
